@@ -7,9 +7,9 @@
 
 #Write your code below this line 👇
 print("Welcome to the tip calculator")
-total_bill = input("What was the total bill? $")
-perc_tip = input("What percantage of tip would you like to give 10, 12 or 15 ? ")
-No_to_split = input("How many people to split the bill? ")
-pay_each = (float(total_bill)*(float(perc_tip)/100 + 1))/(int(No_to_split))
+total_bill = float(input("What was the total bill? $"))
+perc_tip = float(input("What percentage of tip would you like to give 10, 12 or 15 ? "))
+No_to_split = int(input("How many people to split the bill? "))
+pay_each = (total_bill*(perc_tip/100 + 1))/(No_to_split)
 round_pay_each = round(pay_each, 2)
 print(f"Each person should pay ${round_pay_each}: ")
