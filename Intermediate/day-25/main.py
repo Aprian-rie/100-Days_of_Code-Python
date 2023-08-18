@@ -18,26 +18,29 @@ import pandas
 
 data = pandas.read_csv('226 weather-data.csv')
 # print(type(data['temp']))
-# # print(type(data))
+# print(data.size)
 
 # data_dict = data.to_dict()
 # print(data_dict)
 
-# temp_list = data['temp'].tolist()
-# # print(temp_list)
+temp_list = data['temp'].tolist()
+print(temp_list)
 #
 # print(data['temp'].mean())
+# print(data['temp'])
 # print(data['temp'].max())
 #
 # condition_column = data.condition
 # print(condition_column)
 
 # Get data in A Row
+# print(data['condition'][data['condition'] == "Sunny"].size)
+# print(data['temp'])
 # print(data[data.day == "Monday"])
 # print(data[data.temp == data['temp'].max()])
 #
 # monday = data[data.day == 'Monday']
-# # print(monday.condition)
+# # print(monday.condition.)
 #
 # monday_temp = int(monday.temp.iloc[0])
 #
@@ -52,4 +55,4 @@ data_dict  = {
 data2 = pandas.DataFrame(data_dict)
 data2.to_csv("new_data.csv")
 
-print(data2)
+# print(data2)
