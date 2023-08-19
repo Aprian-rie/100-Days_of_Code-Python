@@ -22,10 +22,12 @@ states_name_list = states_data['state'].to_list()
 # print(states_name_list)
 state_count = 0
 states_already_there = []
+states_not_there = []
+
 while not is_states_finished:
     answer_state = screen.textinput(title=f"{state_count} States Correct", prompt="What's another state's name ?")
     title_answer = answer_state.title()
-    states_already_there.append(answer_state)
+    states_already_there.append(title_answer)
     # print(title_answer)
 
     # # print(states_name)
@@ -35,6 +37,8 @@ while not is_states_finished:
     #     t.penup()
     #     t.goto(x=int(states_data[states_data['state'] == title_answer]['x']), y=int(states_data[states_data['state'] == title_answer]['y']))
     #     t.write(title_answer)
+    if title_answer == 'Exit':
+        break
 
     for state in states_name_list:
         if title_answer == state and title_answer not in states_already_there:
@@ -47,3 +51,14 @@ while not is_states_finished:
             state_count += 1
     if state_count == 50:
         is_states_finished = True
+
+for all_states in states_name_list:
+    if all_states not in states_already_there:
+        states_not_there.append(all_states)
+
+states_to_learn_dict = {
+    "states to learn": states_not_there
+}
+states_to_learn = pandas.DataFrame(states_to_learn_dict)
+
+states_to_learn.to_csv("states_to_learn.csv")
