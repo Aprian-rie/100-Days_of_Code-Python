@@ -1,6 +1,3 @@
-# import turtle
-import turtle
-
 import pandas
 from turtle import Turtle, Screen
 # import turtle as turtle
