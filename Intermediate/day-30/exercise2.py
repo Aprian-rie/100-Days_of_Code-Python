@@ -10,7 +10,11 @@ facebook_posts = [
 total_likes = 0
 
 for post in facebook_posts:
-    total_likes = total_likes + post['Likes']
+    try:
+        total_likes = total_likes + post['Likes']
+    except KeyError:
+        post['Likes'] = 0
+        # pass you can also use pass
 
 
 print(total_likes)
