@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
+import json
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -32,24 +33,62 @@ def generate_password():
     pyperclip.copy(password)
 
 
+def find_password():
+    try:
+        with open('data.json', 'r') as data:
+            # read the data
+            try:
+                my_data = json.load(data)
+            except json.decoder.JSONDecodeError:
+                messagebox.showinfo(title="Website Not Found", message="No details for the website")
+            else:
+                if website_input.get() in my_data:
+                    messagebox.showinfo(title=f"{website_input.get()}",
+                                        message=f"Email: {my_data[website_input.get()]['email']} \nPassword: "
+                                                f"{my_data[website_input.get()]['password']}")
+                else:
+                    messagebox.showinfo(title="Website Not Found",
+                                        message="No details for the website")
+
+    except FileNotFoundError:
+        messagebox.showinfo(title="No File",
+                            message="No Data File Found")
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     website_name = website_input.get()
     password_name = password_input.get()
     email_address = email_input.get()
+    new_data = {
+        website_name: {
+            "email": email_address,
+            "password": password_name,
+        }
+    }
 
     if len(website_name) == 0 or len(password_name) == 0 or len(email_address) == 0:
         messagebox.showinfo(title="Oops", message="Please don't leave any empty fields")
 
     else:
-        is_ok = messagebox.askokcancel(title=website_name,
-                                       message=f"These are the details entered: \nEmail: {email_address}"
-                                               f" \nPassword:{password_name} \nIs it okay to save?")
-        if is_ok:
-            with open('data.txt', 'a') as data:
-                data.write(f"{website_name} | {email_address} | {password_name}\n")
-                website_input.delete(0, END)
-                password_input.delete(0, END)
+        try:
+            with open('data.json', 'r') as data:
+                # Reading old data
+                my_data = json.load(data)
+        except FileNotFoundError:
+            with open('data.json', 'w') as data:
+                # Creating new file if not present
+                json.dump(new_data, data, indent=4)
+
+        else:
+            # Updating old data with new data
+            my_data.update(new_data)
+            with open('data.json', 'w') as data:
+                # Saving updated data
+                json.dump(my_data, data, indent=4)
+        finally:
+            website_input.delete(0, END)
+            password_input.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -64,11 +103,11 @@ canvas.create_image(100, 100, image=lock_image)
 canvas.grid(row=0, column=1)
 
 # Inputs
-website_input = Entry(width=48)
-website_input.grid(row=1, column=1, columnspan=2)
+website_input = Entry(width=30)
+website_input.grid(row=1, column=1)
 website_input.focus()
 
-email_input = Entry(width=48)
+email_input = Entry(width=53)
 email_input.grid(row=2, column=1, columnspan=2)
 email_input.insert(0, 'rie@gmail.com')
 
@@ -86,10 +125,13 @@ password_label = Label(text="Password:")
 password_label.grid(row=3, column=0)
 
 # Buttons
-gen_pass_button = Button(text="Generate Password", command=generate_password)
+gen_pass_button = Button(text="Generate Password", command=generate_password, width=18)
 gen_pass_button.grid(row=3, column=2)
 
-add_button = Button(text="Add", width=41, command=save_password)
+add_button = Button(text="Add", width=44, command=save_password)
 add_button.grid(row=4, column=1, columnspan=2)
+
+search_button = Button(text="Search", width=18, command=find_password)
+search_button.grid(row=1, column=2)
 
 window.mainloop()

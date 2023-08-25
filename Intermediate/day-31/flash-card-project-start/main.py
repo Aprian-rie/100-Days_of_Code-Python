@@ -16,7 +16,6 @@ else:
     to_learn = words_data.to_dict(orient="records")
 
 
-
 # print(french_words_list)
 
 # --------- Generating random french word ---------------
