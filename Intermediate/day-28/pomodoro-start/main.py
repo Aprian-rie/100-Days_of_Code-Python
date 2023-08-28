@@ -34,7 +34,6 @@ def start_timer():
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
 
-
     if reps % 8 == 0:
         count_down(long_break_sec)
         timer_label.config(text="Long Break", fg=RED)
