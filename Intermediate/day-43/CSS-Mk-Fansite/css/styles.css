@@ -1,7 +1,25 @@
-h1{
-    color: red;
-    font-size: 20px;
+/******** tag selectors *******/
+h1:hover {
+    color: blue;
 }
+
+/*
 img{
     background-color: red;
+}
+*/
+
+/********* Class Selectors *********/
+.skarlet {
+    background-color: green;
+}
+.kano {
+    background-color: red;
+}
+.circular {
+    border-radius: 100%;
+}
+/********* ID Selectors *********/
+#heading {
+    color: red;
 }
