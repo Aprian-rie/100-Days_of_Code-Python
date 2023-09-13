@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    text-align: center;
 }
 /*div {
     background-color: #7DE5ED;
@@ -10,6 +11,8 @@ h1 {
 /** class selectors **/
 .top-container {
     background-color: #7DE5ED;
+    padding-top: 100px;
+    position: relative;
 }
 .middle-container {
     height: 200px;
@@ -23,4 +26,12 @@ h1 {
 }
 .pro{
     text-decoration: underline;
+}
+.bottom-cloud {
+    position: absolute;
+}
+.top-cloud {
+    position: absolute;
+    right: 650px;
+    top: 30px;
 }
