@@ -33,7 +33,6 @@ for upvote in article_upvotes:
 # print(articles_link)
 # print(articles_text)
 # print(list_upvotes)
-
 highest_upvote = max(list_upvotes)
 highest_upvote_index = list_upvotes.index(highest_upvote)
 print(highest_upvote_index)

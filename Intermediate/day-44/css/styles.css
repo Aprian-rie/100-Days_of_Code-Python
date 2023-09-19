@@ -3,19 +3,28 @@ body {
     text-align: center;
     font-family: "Merriweather", serif;
 }
-/*div {
-    background-color: #7DE5ED;
-}*/
+
 h1 {
+    font-size: 5.625rem;
     margin-top: 0px;
     font-family: 'Sacramento', cursive;
+    color: #65BFBF;
+    line-height: 2;
 }
 h2 {
     font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+    font-weight: normal;
+    color: #65BFBF;
 }
 
 h3 {
     font-family: "Montserrat", sans-serif;
+    color: #11999E;
+    margin
+}
+a {
+    color: #11999E;
 }
 /** class selectors **/
 .top-container {
@@ -24,14 +33,10 @@ h3 {
     position: relative;
 }
 .middle-container {
-    height: 200px;
-    width: 200px;
-    background-color: red;
+
 }
 .bottom-container {
-    height: 200px;
-    width: 200px;
-    background-color: blue;
+
 }
 .pro{
     text-decoration: underline;
@@ -43,4 +48,22 @@ h3 {
     position: absolute;
     right: 650px;
     top: 30px;
+}
+.skill-row {
+    width: 50%;
+    margin: 100px auto 100px auto;
+    text-align: left;
+    line-height: 2;
+}
+
+.network-image {
+    width: 25%;
+    float: right;
+    margin-left: 30px;
+}
+
+.computer-image {
+    width: 25%;
+    float: left;
+    margin-right: 30px;
 }
