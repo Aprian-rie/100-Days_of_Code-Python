@@ -33,3 +33,6 @@ with smtplib.SMTP("smtp.gmail.com", 587) as connection:
 - Try to go through the Gmail Captcha while logged in to the Gmail account: https://accounts.google.com/DisplayUnlockCaptcha
 - Add a port number by changing your code to this:
 ``smtplib.SMTP("smtp.gmail.com, port=587)``
+### The End
+
+By Aprian

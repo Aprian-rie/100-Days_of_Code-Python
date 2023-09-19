@@ -60,3 +60,5 @@ Using the smtplib library. In your code, you have a character '\u2013' (an en da
 in the name_of_product, which might be causing this issue.``
 
 ### The End
+
+By Aprian
