@@ -10,4 +10,4 @@ Update 3rd september, been on the boat all day and doing some procurement stuff 
 19/09/2023
 Starting to pick up the pace, just completed the Spotify project and boy was I happy when I complted it, because I just did it all by myself :) . making good progress
 
-I just noticed that Im don't document the things I learn for future reference and it's not a good habit, therefore I'll try to compensate by documenting via the README files for each day starting from today and the day when I started learning about how to send automatic emails with python.
+I just noticed that I don't document the things I learn for future reference and it's not a good habit, therefore I'll try to compensate by documenting via the README files for each day starting from today and the day when I started learning about how to send automatic emails with python.
