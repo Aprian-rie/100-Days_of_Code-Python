@@ -5,7 +5,7 @@ Personal Growth
 
 Grit 🚀
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/WZg43F4S7s2R2jzQNJ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/ninjawarrior-nbc-ninja-american-warrior-WZg43F4S7s2R2jzQNJ">via GIPHY</a></p>
+## <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/WZg43F4S7s2R2jzQNJ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/ninjawarrior-nbc-ninja-american-warrior-WZg43F4S7s2R2jzQNJ">via GIPHY</a></p>
 
 
 My personal logger where I will be recording my day to day activities as I learn different concepts on Python as I am currently interested in
