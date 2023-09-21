@@ -11,7 +11,7 @@ price2 = driver.find_element(By.XPATH, '//*[@id="corePrice_desktop"]/div/table/t
 price3 = driver.find_element(By.XPATH, '//*[@id="corePrice_desktop"]/div/table/tbody/tr/td[2]/span[1]/span[2]')
 price4 = driver.find_element(By.ID, 'corePrice_desktop')
 title = driver.find_element(By.ID, 'productTitle')
-
+print(price.text)
 print(price2.text)
 print(title.text)
 print(price3.text)
