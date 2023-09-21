@@ -2,11 +2,11 @@ Day 45
 ### learning how to scrape the web for Data Using Beautiful soup
 Web Scraping involves looking through the underlying HTML code of a website to get hold of the information that we want.
 
-//// Image of Web Scraping \\\\\\
+<p align="center"><img src="web_scraping.png" width="300" /></p>
 
 The aim for today is to learn how to make soup using beautiful soup!
 
-///// Image of Beautiful soup \\\\\\\
+
 Beautiful soup is a module that helps developers make sense of websites and pull out the relevant parts of the data.
 It is basically a HTMl parser.
 
@@ -29,6 +29,7 @@ import lxml
 soup = BeautifulSoup(contents, 'lxml')
 ```
 Beautiful soup documentation: {linkkk}
+<p align="center"><img src="beautiful_soup.png" width="300" /></p>
 
 ### Finding and Selecting Particular Elements with Beautiful Soup
 The soup is now an object that allows us to tap in to various parts of the website
@@ -93,7 +94,7 @@ print(soup.a)
 # In this case it will be <a href="https://www.rie.co/">The App Brewery</a>
 ```
 #### Output
-``<a href="https://www.rie.co/">The App Brewery</a>``
+``<a href="https://www.rie.co/">Rie's Site</a>``
 
 Other elements also can be used such as
 
@@ -111,9 +112,89 @@ We can search for many things such as by name
 all_anchor_tags = soup.find_all(name='a')
 print(all_anchor_tags)
 # It is going to give us all the anchor tags present in the website as a list
+# Since it prints a list of all anchor tags, to want the strings inside the tags a for loop is used
+
+for tag in all_anchor_tags:
+    print(tag.getText())
+
+# Also if you wanted to get a hold of the href's
+for tag in all_anchor_tags:
+    print(tag.get("href"))
+
+# Finding the values by attributes
+heading = soup.find(name="h1", id="name")
+print(heading)
+# This prints out my heading because it finds the h1 element with the id name
+
+section_heading = soup.find_all(name="h3", class_="heading")
+print(section_heading)
+# This prints out the heading of the h3 element with class heading
+# and class_ has been used instead of class as class is a predefined word in the python language
 ```
 #### Output
 ``[<a href="https://www.rie.co/">The App Brewery</a>, <a href="https://aprian.github.io/cv/hobbies.html">My Hobbies</a>, <a href="https://aprian.github.io/cv/contact-me.html">Contact Me</a>]``
+
+
+### Scraping a Live Website
+
+The website used for our case study is the <a href="https://news.ycombinator.com/news">YCombinator's Hacker</a>
+
+This is where anybody can post a link to a news piece that they have discovered that's tech related
+
+```python
+from bs4 import BeautifulSoup
+import requests
+# In order to download the data from the website I uesd the requests
+
+response = requests.get('https://news.ycombinator.com/news')
+ycwebpage = response.text
+print(ycwebpage)
+# the above print statement prints out our webpage in html format (not necessary though)
+
+soup = BeautifulSoup(ycwebpage, "html.parser")
+articles = soup.find_all(name="span", class_="titleline")
+# Finds all article titles  and stores them in a list of span elements
+
+
+articles_text = []
+articles_link = []
+list_upvotes = []
+
+for article in articles:
+    article_text = article.getText()
+    articles_text.append(article_text)
+    article_link = article.find(name="a").get("href")
+    articles_link.append(article_link)
+
+
+# article_1_text = article_1.getText()
+# article_1_link = article_1.find(name="a").get("href")
+# article_1_upvote = soup.find(name="span", class_="score").getText()
+
+article_upvotes = soup.find_all(name="span", class_="score")
+
+for upvote in article_upvotes:
+    article_upvote = int(upvote.getText().split()[0])
+    list_upvotes.append(article_upvote)
+
+
+# print(articles_link)
+# print(articles_text)
+# print(list_upvotes)
+highest_upvote = max(list_upvotes)
+highest_upvote_index = list_upvotes.index(highest_upvote)
+print(highest_upvote_index)
+print(articles_text[highest_upvote_index])
+print(articles_link[highest_upvote_index])
+
+
+```
+
+
 - The first basic task that I'll be doing is obtaining data from the website Empire's 100 Greatest Movies of all time. It's a huge list of good movies that everyone should have watched at a certain point of time in their lives.
     
     We are gonna pull out the relevant parts to us namely the title and the ranking of each movieand use it to compile a list of movies that we have to watch so that we can look at the list of the 100 movies.
+
+The code is shown in the file Starting Code - 100-movies-to-watch
+
+## The End
