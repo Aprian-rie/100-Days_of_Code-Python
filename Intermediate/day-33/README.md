@@ -78,3 +78,52 @@ From the output we did not get a JSON data like in the previous time we pasted i
 directly in the browser instead we see the number 200 printed here
 
 This is our response code
+
+### Working with Responses_ HTTP Codes, Exceptions & JSON Data
+The response codes that we can get from an API 
+
+The response codes have  a very specific meaning, but the most important thing they tell us
+if our request succeeded or if it failed.
+
+#### Summary of the status codes by the first number
+    1XX: Hold on something's happening this is not the end
+    2XX: Here you go everything was successful
+    3XX: Go away you don't have permission to get this thing
+    4XX: You screwed up
+    5XX: I (Computer / Server) Screwed up
+
+Let's continue with our snippet
+
+```python
+import requests
+response = requests.get(url="http://api.open-notify.org/iss-now.json")
+response.raise_for_status()
+# What this code does is that it raises an exception whenever it doesn ot succeed depending on 
+# the response code number
+
+#Get hold of the actual data
+data = response.json()
+# This returns our data in json format
+print(data)
+```
+
+Output
+
+```markdown
+{'message': 'success', 'iss_position': {'longitude': '-60.1974', 'latitude': '-50.5300'}, 'timestamp': 1695386717}
+```
+
+This is like a normal dictionary, therefore we can tap into their respective key element
+pair values
+
+Example
+```python
+location_data = response.json()["iss_position"]
+print(location_data)
+```
+Output
+
+``{'longitude': '-60.1974', 'latitude': '-50.5300'}``
+
+### The End.
+
